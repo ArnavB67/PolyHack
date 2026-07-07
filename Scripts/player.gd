@@ -13,6 +13,16 @@ func _process(delta: float) -> void:
 	health_bar.value = Globals.HackPercentage
 	if Globals.IsGameOver == true:
 		queue_free()
+	if Globals.IsPlayerHit:
+		Globals.IsPlayerHit= false
+		$DamageEffect.emitting = true
+		var Camera=get_viewport().get_camera_2d()
+		if Camera:
+			Camera.ShakeOnHit(25)
+		$"../LevelUI/GlitchEffect".visible=true
+		await get_tree().create_timer(0.15).timeout
+		$"../LevelUI/GlitchEffect".visible=false
+		
 
 func _physics_process(delta: float) -> void:
 	var Direction = Input.get_vector("Left","Right","Up","Down")

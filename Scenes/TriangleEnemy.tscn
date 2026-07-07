@@ -9,7 +9,7 @@ metadata/_edit_vertical_guides_ = [-1.0]
 metadata/_edit_horizontal_guides_ = [4.0]
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=726458611]
-color = Color(0.71314275, 0.09232233, 0.12015482, 1)
+color = Color(1, 0, 0, 1)
 polygon = PackedVector2Array(4, 0, -2, -3, -2, 3)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=735994258]

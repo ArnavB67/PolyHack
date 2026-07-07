@@ -23,6 +23,7 @@ script = ExtResource("1_v0iea")
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=431576194]
 color = Color(0.28581735, 0.9799898, 0.43828398, 1)
+antialiased = true
 polygon = PackedVector2Array(4, 0, -2, -3, -2, 3)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=580446180]
@@ -43,3 +44,18 @@ theme_override_styles/background = SubResource("StyleBoxFlat_v0iea")
 theme_override_styles/fill = SubResource("StyleBoxFlat_cvnsp")
 value = 50.0
 show_percentage = false
+
+[node name="DamageEffect" type="CPUParticles2D" parent="." unique_id=218628757]
+emitting = false
+amount = 30
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 0.5
+local_coords = true
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 40.0
+color = Color(1, 0, 0, 1)

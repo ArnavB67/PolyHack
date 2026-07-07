@@ -22,8 +22,8 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		if Globals.HackPercentage+5<100:
 			Globals.HackPercentage+=5
+			Globals.IsPlayerHit = true
 		elif Globals.HackPercentage<=100:
 			Globals.HackPercentage=100
 			Globals.IsGameOver = true
-			
 		queue_free()
