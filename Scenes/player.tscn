@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bxov726tclif1"]
+
+[ext_resource type="Script" uid="uid://cxx53fl282upx" path="res://Scripts/player.gd" id="1_v0iea"]
+
+[node name="Player" type="CharacterBody2D" unique_id=1101997899]
+script = ExtResource("1_v0iea")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=431576194]
+color = Color(0.28581735, 0.9799898, 0.43828398, 1)
+polygon = PackedVector2Array(4, 0, -2, -3, -2, 3)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=580446180]
+visible = false
+polygon = PackedVector2Array(4, 0, -2, 3, -2, -3)

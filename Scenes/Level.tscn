@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b3jhq6kmjjk58"]
+
+[ext_resource type="PackedScene" uid="uid://bxov726tclif1" path="res://Scenes/player.tscn" id="1_0ba56"]
+
+[sub_resource type="Gradient" id="Gradient_sfrck"]
+colors = PackedColorArray(0, 0, 0, 0.49019608, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0ba56"]
+gradient = SubResource("Gradient_sfrck")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Level" type="Node" unique_id=847438034]
+
+[node name="LevelBG" type="TextureRect" parent="." unique_id=2136950392]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_0ba56")
+
+[node name="Player" parent="." unique_id=1101997899 instance=ExtResource("1_0ba56")]
+position = Vector2(271, 269)
