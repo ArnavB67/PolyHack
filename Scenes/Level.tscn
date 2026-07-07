@@ -1,24 +1,177 @@
 [gd_scene format=3 uid="uid://b3jhq6kmjjk58"]
 
 [ext_resource type="PackedScene" uid="uid://bxov726tclif1" path="res://Scenes/player.tscn" id="1_0ba56"]
+[ext_resource type="Script" uid="uid://dgchyxx7oxb6r" path="res://Scripts/background_logs.gd" id="1_8rbpu"]
+[ext_resource type="FontFile" uid="uid://l0y6rw06k73f" path="res://Assets/NotoSans_Condensed-Thin.ttf" id="1_vsvp5"]
 
-[sub_resource type="Gradient" id="Gradient_sfrck"]
-colors = PackedColorArray(0, 0, 0, 0.49019608, 0, 0, 0, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8rbpu"]
+bg_color = Color(0.18000486, 0.18000486, 0.18000486, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_0ba56"]
-gradient = SubResource("Gradient_sfrck")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ba56"]
+size = Vector2(14, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vsvp5"]
+size = Vector2(1162, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8rbpu"]
+size = Vector2(12, 658)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fuudy"]
+size = Vector2(1170, 20)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ba56"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vsvp5"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_8rbpu"]
+
+[sub_resource type="Gradient" id="Gradient_fuudy"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xylue"]
+gradient = SubResource("Gradient_fuudy")
+width = 256
+height = 256
+
+[sub_resource type="SphereMesh" id="SphereMesh_tj5wv"]
+
+[sub_resource type="Gradient" id="Gradient_vsvp5"]
+colors = PackedColorArray(0.80784315, 0.7294118, 0.16470589, 1, 0.80784315, 0.7294118, 0.16470589, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8rbpu"]
+gradient = SubResource("Gradient_vsvp5")
+
+[sub_resource type="SphereMesh" id="SphereMesh_ienac"]
+
+[sub_resource type="Gradient" id="Gradient_xylue"]
+colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tj5wv"]
+gradient = SubResource("Gradient_xylue")
 
 [node name="Level" type="Node" unique_id=847438034]
+metadata/_edit_vertical_guides_ = [1113.0]
+metadata/_edit_horizontal_guides_ = [3.0]
 
-[node name="LevelBG" type="TextureRect" parent="." unique_id=2136950392]
+[node name="BG" type="Panel" parent="." unique_id=252478960]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_0ba56")
+theme_override_styles/panel = SubResource("StyleBoxFlat_8rbpu")
+
+[node name="BackgroundLogs" type="RichTextLabel" parent="." unique_id=1599865411]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 21.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.25882354, 0.98039216, 0.39215687, 0.19607843)
+scroll_following = true
+script = ExtResource("1_8rbpu")
+
+[node name="Borders" type="Node" parent="." unique_id=2109111383]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Borders" unique_id=537287885]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D" unique_id=1925056576]
+position = Vector2(-3, 324)
+shape = SubResource("RectangleShape2D_0ba56")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Borders" unique_id=1902251667]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D2" unique_id=2059232421]
+position = Vector2(571, 5.5)
+shape = SubResource("RectangleShape2D_vsvp5")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Borders" unique_id=1117691591]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D3" unique_id=1905975010]
+position = Vector2(1154, 319)
+shape = SubResource("RectangleShape2D_8rbpu")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Borders" unique_id=1561507463]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D4" unique_id=279496517]
+position = Vector2(575, 654)
+shape = SubResource("RectangleShape2D_fuudy")
+
+[node name="LevelUI" type="CanvasLayer" parent="." unique_id=1187654597]
+
+[node name="Panel" type="Panel" parent="LevelUI" unique_id=257525394]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0ba56")
+
+[node name="Panel2" type="Panel" parent="LevelUI" unique_id=1320980113]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 21.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vsvp5")
+
+[node name="Label" type="Label" parent="LevelUI" unique_id=246221633]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -62.0
+offset_right = 64.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_vsvp5")
+text = "~:bash - Konsole"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="LevelUI" unique_id=1607837357]
+position = Vector2(1134.9955, 12)
+scale = Vector2(8, 8)
+mesh = SubResource("SphereMesh_8rbpu")
+texture = SubResource("GradientTexture2D_xylue")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="LevelUI" unique_id=433628135]
+position = Vector2(1118.9955, 12)
+scale = Vector2(8, 8)
+mesh = SubResource("SphereMesh_tj5wv")
+texture = SubResource("GradientTexture1D_8rbpu")
+
+[node name="MeshInstance2D3" type="MeshInstance2D" parent="LevelUI" unique_id=977585344]
+position = Vector2(1102.9955, 12)
+scale = Vector2(8, 8)
+mesh = SubResource("SphereMesh_ienac")
+texture = SubResource("GradientTexture2D_tj5wv")
 
 [node name="Player" parent="." unique_id=1101997899 instance=ExtResource("1_0ba56")]
-position = Vector2(271, 269)
+z_index = 10
+position = Vector2(587, 295)
+collision_mask = 10
+
+[node name="Timer" type="Timer" parent="." unique_id=917509772]
+wait_time = 0.009999999999999998
+autostart = true
+
+[connection signal="timeout" from="Timer" to="BackgroundLogs" method="_on_timer_timeout"]
