@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bxov726tclif1" path="res://Scenes/player.tscn" id="1_0ba56"]
 [ext_resource type="Script" uid="uid://dgchyxx7oxb6r" path="res://Scripts/background_logs.gd" id="1_8rbpu"]
+[ext_resource type="Script" uid="uid://ujvpeftihu2k" path="res://Scenes/level.gd" id="1_fuudy"]
 [ext_resource type="FontFile" uid="uid://l0y6rw06k73f" path="res://Assets/NotoSans_Condensed-Thin.ttf" id="1_vsvp5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8rbpu"]
@@ -55,8 +56,9 @@ colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 1)
 gradient = SubResource("Gradient_xylue")
 
 [node name="Level" type="Node" unique_id=847438034]
+script = ExtResource("1_fuudy")
 metadata/_edit_vertical_guides_ = [1113.0]
-metadata/_edit_horizontal_guides_ = [3.0]
+metadata/_edit_horizontal_guides_ = [680.0]
 
 [node name="BG" type="Panel" parent="." unique_id=252478960]
 anchors_preset = 15
@@ -79,6 +81,10 @@ grow_vertical = 2
 theme_override_colors/default_color = Color(0.25882354, 0.98039216, 0.39215687, 0.19607843)
 scroll_following = true
 script = ExtResource("1_8rbpu")
+
+[node name="BackgroundLogsTimer" type="Timer" parent="." unique_id=917509772]
+wait_time = 0.009999999999999998
+autostart = true
 
 [node name="Borders" type="Node" parent="." unique_id=2109111383]
 
@@ -170,8 +176,9 @@ z_index = 10
 position = Vector2(587, 295)
 collision_mask = 10
 
-[node name="Timer" type="Timer" parent="." unique_id=917509772]
-wait_time = 0.009999999999999998
+[node name="EnemySpawnTimer" type="Timer" parent="." unique_id=681386568]
+wait_time = 5.0
 autostart = true
 
-[connection signal="timeout" from="Timer" to="BackgroundLogs" method="_on_timer_timeout"]
+[connection signal="timeout" from="BackgroundLogsTimer" to="BackgroundLogs" method="_on_timer_timeout"]
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

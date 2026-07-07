@@ -2,6 +2,20 @@
 
 [ext_resource type="Script" uid="uid://cxx53fl282upx" path="res://Scripts/player.gd" id="1_v0iea"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v0iea"]
+bg_color = Color(0.14153159, 8.04686e-08, 1.8049032e-08, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvnsp"]
+bg_color = Color(0.79607844, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [node name="Player" type="CharacterBody2D" unique_id=1101997899]
 z_index = 5
 scale = Vector2(4, 4)
@@ -13,3 +27,19 @@ polygon = PackedVector2Array(4, 0, -2, -3, -2, 3)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=580446180]
 polygon = PackedVector2Array(4, 0, -2, 3, -2, -3)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1077942551]
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer" unique_id=121976333]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 46.0
+offset_right = 80.0
+offset_bottom = 51.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_v0iea")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cvnsp")
+value = 50.0
+show_percentage = false

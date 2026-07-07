@@ -269,4 +269,4 @@ func _process(delta: float) -> void:
 func _on_timer_timeout() -> void:
 	var RandomLine = FakeLogs.pick_random()
 	append_text("\n> " + RandomLine)
-	$"../Timer".wait_time = randf_range(0.01,0.1)
+	$"../BackgroundLogsTimer".wait_time = randf_range(0.01,0.1)
