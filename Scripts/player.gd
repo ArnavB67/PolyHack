@@ -12,7 +12,8 @@ func _process(delta: float) -> void:
 	Globals.PlayerPosition = global_position
 	health_bar.value = Globals.HackPercentage
 	if Globals.IsGameOver == true:
-		queue_free()
+		hide()
+		$"../LevelUI/GlitchEffect".visible=true
 	if Globals.IsPlayerHit:
 		Globals.IsPlayerHit= false
 		$DamageEffect.emitting = true
