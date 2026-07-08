@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://f3xi1xd8fgmx"]
+
+[ext_resource type="Script" uid="uid://e1h8sobay3sj" path="res://Scripts/text_rain.gd" id="1_kijon"]
+[ext_resource type="FontFile" uid="uid://drij4fx1kburw" path="res://Assets/VT323-Regular.ttf" id="1_strgb"]
+
+[node name="TextRain" type="Node2D" unique_id=437544540]
+script = ExtResource("1_kijon")
+
+[node name="Label" type="Label" parent="." unique_id=355243850]
+modulate = Color(0.64821196, 1.825, 0.5977948, 1)
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0.99607843, 0.3372549, 0.49019608)
+theme_override_fonts/font = ExtResource("1_strgb")

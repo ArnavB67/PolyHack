@@ -31,3 +31,7 @@ func _on_enemy_spawn_timer_timeout() -> void:
 func _on_restart_pressed() -> void:
 	Globals.Reset()
 	get_tree().reload_current_scene()
+
+
+func _on_home_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")

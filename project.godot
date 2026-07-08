@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="PolyHack"
-run/main_scene="uid://b3jhq6kmjjk58"
+run/main_scene="uid://bpvumvmgkqjtl"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

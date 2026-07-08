@@ -1,0 +1,240 @@
+[gd_scene format=3 uid="uid://bpvumvmgkqjtl"]
+
+[ext_resource type="FontFile" uid="uid://l0y6rw06k73f" path="res://Assets/NotoSans_Condensed-Thin.ttf" id="1_1ehe0"]
+[ext_resource type="Script" uid="uid://b5ufnfxauo1v4" path="res://Scenes/main_menu.gd" id="1_ce3w2"]
+[ext_resource type="FontFile" uid="uid://drij4fx1kburw" path="res://Assets/VT323-Regular.ttf" id="2_ce3w2"]
+[ext_resource type="FontFile" uid="uid://cl55wjokfjvjq" path="res://Assets/CascadiaCode-Light.ttf" id="3_n45e2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opfnp"]
+bg_color = Color(0.18000486, 0.18000486, 0.18000486, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cp0ys"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yhxw7"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_trj04"]
+
+[sub_resource type="Gradient" id="Gradient_fuudy"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_16hvj"]
+gradient = SubResource("Gradient_fuudy")
+width = 256
+height = 256
+
+[sub_resource type="SphereMesh" id="SphereMesh_vr1f0"]
+
+[sub_resource type="Gradient" id="Gradient_vsvp5"]
+colors = PackedColorArray(0.80784315, 0.7294118, 0.16470589, 1, 0.80784315, 0.7294118, 0.16470589, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t1dhk"]
+gradient = SubResource("Gradient_vsvp5")
+
+[sub_resource type="SphereMesh" id="SphereMesh_5egv6"]
+
+[sub_resource type="Gradient" id="Gradient_xylue"]
+colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vtepg"]
+gradient = SubResource("Gradient_xylue")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ehe0"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ce3w2"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n45e2"]
+bg_color = Color(0.49354517, 0.49354565, 0.49354535, 0.13725491)
+
+[node name="MainMenu" type="Control" unique_id=1130401242]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ce3w2")
+
+[node name="BG" type="Panel" parent="." unique_id=1927528658]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_opfnp")
+
+[node name="LevelUI" type="CanvasLayer" parent="." unique_id=2067632817]
+
+[node name="Panel" type="Panel" parent="LevelUI" unique_id=436447893]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cp0ys")
+
+[node name="Panel2" type="Panel" parent="LevelUI" unique_id=783456987]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 21.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yhxw7")
+
+[node name="Label" type="Label" parent="LevelUI" unique_id=821295894]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -62.0
+offset_right = 64.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_1ehe0")
+text = "~:bash - Konsole"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="LevelUI" unique_id=1269304353]
+position = Vector2(1134.9955, 12)
+scale = Vector2(8, 8)
+mesh = SubResource("SphereMesh_trj04")
+texture = SubResource("GradientTexture2D_16hvj")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="LevelUI" unique_id=316092288]
+position = Vector2(1118.9955, 12)
+scale = Vector2(8, 8)
+mesh = SubResource("SphereMesh_vr1f0")
+texture = SubResource("GradientTexture1D_t1dhk")
+
+[node name="MeshInstance2D3" type="MeshInstance2D" parent="LevelUI" unique_id=1416581046]
+position = Vector2(1102.9955, 12)
+scale = Vector2(8, 8)
+mesh = SubResource("SphereMesh_5egv6")
+texture = SubResource("GradientTexture2D_vtepg")
+
+[node name="Label2" type="Label" parent="LevelUI" unique_id=614931480]
+modulate = Color(1.4061397, 1.825, 1.3660997, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -205.0
+offset_top = -278.0
+offset_right = 205.0
+offset_bottom = -149.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.99607843, 0.3372549, 1)
+theme_override_fonts/font = ExtResource("2_ce3w2")
+theme_override_font_sizes/font_size = 128
+text = "POLYHACK"
+
+[node name="Label3" type="Label" parent="LevelUI" unique_id=296186705]
+modulate = Color(1.6165419, 1.8249996, 1.5942287, 1)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -347.0
+offset_top = 185.0
+offset_right = 347.0
+offset_bottom = 223.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0.99607843, 0.3372549, 1)
+theme_override_fonts/font = ExtResource("3_n45e2")
+theme_override_font_sizes/font_size = 32
+text = "Prevent Your System Fro"
+
+[node name="Label4" type="Label" parent="LevelUI" unique_id=1299185278]
+modulate = Color(1.8249629, 0.5063068, 0.40187162, 1)
+offset_left = 659.0
+offset_top = 183.0
+offset_right = 927.0
+offset_bottom = 284.0
+theme_override_colors/font_color = Color(0.99982375, 0.24047163, 0.18368441, 1)
+theme_override_fonts/font = ExtResource("2_ce3w2")
+theme_override_font_sizes/font_size = 40
+text = "m Being HACKED
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelUI" unique_id=336860493]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = 27.0
+offset_right = 64.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="ConnectButton" type="Button" parent="LevelUI/VBoxContainer" unique_id=83479360]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.99607843, 0.3372549, 1)
+theme_override_colors/font_focus_color = Color(0, 0.99607843, 0.3372549, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.99607843, 0.3372549, 1)
+theme_override_colors/font_hover_color = Color(0, 0.99607843, 0.3372549, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.99607843, 0.3372549, 1)
+theme_override_fonts/font = ExtResource("2_ce3w2")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_1ehe0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ce3w2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_n45e2")
+text = ">Connect"
+alignment = 0
+
+[node name="ConfigureButton" type="Button" parent="LevelUI/VBoxContainer" unique_id=1215138183]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.99607843, 0.3372549, 1)
+theme_override_colors/font_focus_color = Color(0, 0.99607843, 0.3372549, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.99607843, 0.3372549, 1)
+theme_override_colors/font_hover_color = Color(0, 0.99607843, 0.3372549, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.99607843, 0.3372549, 1)
+theme_override_fonts/font = ExtResource("2_ce3w2")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_1ehe0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ce3w2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_n45e2")
+text = ">Configure
+"
+alignment = 0
+
+[node name="QuitButton" type="Button" parent="LevelUI/VBoxContainer" unique_id=925054618]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.99607843, 0.3372549, 1)
+theme_override_colors/font_focus_color = Color(0, 0.99607843, 0.3372549, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.99607843, 0.3372549, 1)
+theme_override_colors/font_hover_color = Color(0, 0.99607843, 0.3372549, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.99607843, 0.3372549, 1)
+theme_override_fonts/font = ExtResource("2_ce3w2")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_1ehe0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ce3w2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_n45e2")
+text = ">Exit
+"
+alignment = 0
+
+[node name="RainTextTimer" type="Timer" parent="." unique_id=1693999336]
+wait_time = 0.05
+autostart = true
+
+[connection signal="pressed" from="LevelUI/VBoxContainer/ConnectButton" to="." method="_on_connect_button_pressed"]
+[connection signal="pressed" from="LevelUI/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="timeout" from="RainTextTimer" to="." method="_on_rain_text_timer_timeout"]

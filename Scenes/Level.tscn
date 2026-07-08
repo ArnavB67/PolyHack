@@ -37,29 +37,29 @@ shadow_offset = Vector2(4, 4)
 
 [sub_resource type="SphereMesh" id="SphereMesh_8rbpu"]
 
-[sub_resource type="Gradient" id="Gradient_fuudy"]
+[sub_resource type="Gradient" id="Gradient_5rrr5"]
 colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_xylue"]
-gradient = SubResource("Gradient_fuudy")
+gradient = SubResource("Gradient_5rrr5")
 width = 256
 height = 256
 
 [sub_resource type="SphereMesh" id="SphereMesh_tj5wv"]
 
-[sub_resource type="Gradient" id="Gradient_vsvp5"]
+[sub_resource type="Gradient" id="Gradient_or7tv"]
 colors = PackedColorArray(0.80784315, 0.7294118, 0.16470589, 1, 0.80784315, 0.7294118, 0.16470589, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_8rbpu"]
-gradient = SubResource("Gradient_vsvp5")
+gradient = SubResource("Gradient_or7tv")
 
 [sub_resource type="SphereMesh" id="SphereMesh_ienac"]
 
-[sub_resource type="Gradient" id="Gradient_xylue"]
+[sub_resource type="Gradient" id="Gradient_133si"]
 colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_tj5wv"]
-gradient = SubResource("Gradient_xylue")
+gradient = SubResource("Gradient_133si")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5rrr5"]
 shader = ExtResource("5_ienac")
@@ -305,7 +305,6 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="GameOverLayer" type="CanvasLayer" parent="." unique_id=1668819839]
-visible = false
 
 [node name="GameOverPanel" type="Panel" parent="GameOverLayer" unique_id=1726849497]
 anchors_preset = 8
@@ -418,9 +417,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 59.0
+offset_left = 49.0
 offset_top = 25.0
-offset_right = 157.0
+offset_right = 158.0
 offset_bottom = 66.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -440,7 +439,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_fhlu0")
 theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_bktio")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_nrlyp")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_44tr1")
-text = "HOME
+text = "DISCONNECT
 "
 
 [node name="Player" parent="." unique_id=1101997899 instance=ExtResource("1_0ba56")]
@@ -460,4 +459,5 @@ environment = SubResource("Environment_5rrr5")
 
 [connection signal="timeout" from="BackgroundLogsTimer" to="BackgroundLogs" method="_on_timer_timeout"]
 [connection signal="pressed" from="GameOverLayer/GameOverPanel/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="GameOverLayer/GameOverPanel/Home" to="." method="_on_home_pressed"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

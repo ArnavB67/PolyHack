@@ -21,6 +21,7 @@ func _process(delta: float) -> void:
 		trail.remove_point(0)
 	Globals.PlayerPosition = global_position
 	health_bar.value = Globals.HackPercentage
+	$CanvasLayer/HealthBar/Label.text= str(Globals.HackPercentage)+"% HACKED"
 	if Globals.IsGameOver == true:
 		hide()
 		$"../LevelUI/GlitchEffect".visible=true
