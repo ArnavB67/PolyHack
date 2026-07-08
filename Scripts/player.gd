@@ -35,6 +35,7 @@ func _process(delta: float) -> void:
 	if Globals.IsPlayerHit:
 		Globals.IsPlayerHit= false
 		$DamageEffect.emitting = true
+		$DamageSound.play()
 		var Camera=get_viewport().get_camera_2d()
 		if Camera:
 			Camera.ShakeOnHit(25)

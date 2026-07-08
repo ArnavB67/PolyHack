@@ -30,6 +30,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 func TakeDamage(Damage):
 	SquareHitCount+=Damage
+	$DamageSound.play()
 	$DeathEffect.emitting=true
 	var Camera=get_viewport().get_camera_2d()
 	if Camera:

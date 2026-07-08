@@ -12,6 +12,9 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8rbpu"]
 bg_color = Color(0.18000486, 0.18000486, 0.18000486, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gs5q7"]
+bg_color = Color(1, 0, 0, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pmxqn"]
 bg_color = Color(0, 1, 0, 0)
 
@@ -190,6 +193,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8rbpu")
+
+[node name="WarningBG" type="Panel" parent="." unique_id=1511853576]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gs5q7")
 
 [node name="HealBG" type="Panel" parent="." unique_id=89226121]
 anchors_preset = 15

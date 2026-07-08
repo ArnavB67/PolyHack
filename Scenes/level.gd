@@ -4,11 +4,12 @@ const TRIANGLE_ENEMY = preload("uid://ffuginxsakpn")
 const SQUARE_ENEMY = preload("uid://b0b7byu7bpff6")
 var GameOverTriggered = false
 var LastTimeHealedScore =0
+var IsWarningActive = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	%GameOverLayer.visible=false
 	Engine.time_scale=1
-
+	Input.set_custom_mouse_cursor(preload("res://Assets/crosshair.png"),Input.CURSOR_ARROW,Vector2(16,16))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -18,6 +19,13 @@ func _process(delta: float) -> void:
 		var HealTween = get_tree().create_tween()
 		HealTween.tween_property($HealBG.get_theme_stylebox("panel"),"bg_color:a",0.1,0.2)
 		HealTween.tween_property($HealBG.get_theme_stylebox("panel"),"bg_color:a",0,0.2)
+	elif Globals.HackPercentage>=90 and not IsWarningActive:
+		IsWarningActive=true
+		var WarningTween = get_tree().create_tween().set_loops()
+		WarningTween.tween_property($WarningBG.get_theme_stylebox("panel"),"bg_color:a",0.1,0.2)
+		WarningTween.tween_property($WarningBG.get_theme_stylebox("panel"),"bg_color:a",0,0.2)
+	elif Globals.HackPercentage<90:
+		IsWarningActive=false
 	$LevelUI/Score.text = "PURGED : "+str(Globals.Score)
 	$GameOverLayer/GameOverPanel/Label2.text=str(Globals.Score)+" THREATS NULLIFIED"
 	var CurrentEnemySpawnTimer= max(0.25,1.5-(Globals.Score*0.01))

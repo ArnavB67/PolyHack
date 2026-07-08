@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ffuginxsakpn"]
 
 [ext_resource type="Script" uid="uid://c2k7nh32v3kpx" path="res://Scripts/enemy.gd" id="1_yrm4s"]
+[ext_resource type="AudioStream" uid="uid://de5jef3eb3jue" path="res://Assets/hurt.wav" id="2_amo2m"]
 
 [node name="TriangleEnemy" type="Area2D" unique_id=621703244]
 scale = Vector2(4, 4)
@@ -33,6 +34,10 @@ gravity = Vector2(0, 0)
 initial_velocity_min = 10.0
 initial_velocity_max = 40.0
 color = Color(0, 1, 0, 1)
+
+[node name="DamageSound" type="AudioStreamPlayer2D" parent="." unique_id=1504092486]
+stream = ExtResource("2_amo2m")
+volume_db = -0.16
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="LifeTime" to="." method="_on_life_time_timeout"]

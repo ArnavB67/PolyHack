@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cxx53fl282upx" path="res://Scripts/player.gd" id="1_v0iea"]
 [ext_resource type="FontFile" uid="uid://drij4fx1kburw" path="res://Assets/VT323-Regular.ttf" id="2_cvnsp"]
+[ext_resource type="AudioStream" uid="uid://de5jef3eb3jue" path="res://Assets/hurt.wav" id="3_6t5aa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v0iea"]
 bg_color = Color(0.14153159, 8.04686e-08, 1.8049032e-08, 1)
@@ -158,6 +159,10 @@ one_shot = true
 [node name="BulletTimer" type="Timer" parent="." unique_id=1368753066]
 wait_time = 0.5
 one_shot = true
+
+[node name="DamageSound" type="AudioStreamPlayer2D" parent="." unique_id=1156416461]
+stream = ExtResource("3_6t5aa")
+volume_db = -0.16
 
 [connection signal="timeout" from="ShockwaveCooldown" to="." method="_on_shockwave_cooldown_timeout"]
 [connection signal="timeout" from="BulletTimer" to="." method="_on_bullet_timer_timeout"]

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b0b7byu7bpff6"]
 
 [ext_resource type="Script" uid="uid://b1nacd66t3psr" path="res://Scripts/square_enemy.gd" id="1_s5bd7"]
+[ext_resource type="AudioStream" uid="uid://de5jef3eb3jue" path="res://Assets/hurt.wav" id="2_4bhya"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_s5bd7"]
 
@@ -45,6 +46,10 @@ color = Color(0, 1, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=825591196]
 shape = SubResource("RectangleShape2D_4bhya")
+
+[node name="DamageSound" type="AudioStreamPlayer2D" parent="." unique_id=1817149347]
+stream = ExtResource("2_4bhya")
+volume_db = -0.16
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="LifeTime" to="." method="_on_life_time_timeout"]
