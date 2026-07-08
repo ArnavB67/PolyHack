@@ -28,6 +28,7 @@ func _on_body_entered(body: Node2D) -> void:
 		queue_free()
 
 func TakeDamage():
+	Globals.Score+=1
 	$DeathEffect.emitting=true
 	$Polygon2D.hide()
 	$CollisionPolygon2D.set_deferred("disabled",true)

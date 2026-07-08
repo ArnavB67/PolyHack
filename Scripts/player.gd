@@ -14,6 +14,13 @@ func _ready() -> void:
 	add_to_group("Player")
 
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("EscapeMenu"):
+		%GameOverLayer.visible= not %GameOverLayer.visible
+		if Engine.time_scale!=0:
+			Engine.time_scale=0
+		else:
+			Engine.time_scale=1
+	
 	$CanvasLayer/ShockWaveCooldown/ShockwaveProgressBar.value= $ShockwaveCooldown.time_left
 	$CanvasLayer/BulletCooldown/BulletCooldownProgressBar.value= $BulletTimer.time_left
 	trail.add_point(global_position)
