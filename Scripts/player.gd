@@ -7,11 +7,15 @@ const RotationSpeed = 15
 @onready var trail: Line2D = $Trail
 const SHOCKWAVE = preload("uid://cenqfmvdq47s8")
 const BULLET = preload("uid://n4emwbh4t78o")
+var OnShockwaveCooldown= false
+var OnBulletCooldown= false
 
 func _ready() -> void:
 	add_to_group("Player")
 
 func _process(delta: float) -> void:
+	$CanvasLayer/ShockWaveCooldown/ShockwaveProgressBar.value= $ShockwaveCooldown.time_left
+	$CanvasLayer/BulletCooldown/BulletCooldownProgressBar.value= $BulletTimer.time_left
 	trail.add_point(global_position)
 	if trail.get_point_count()>15:
 		trail.remove_point(0)
@@ -29,8 +33,8 @@ func _process(delta: float) -> void:
 		$"../LevelUI/GlitchEffect".visible=true
 		await get_tree().create_timer(0.15).timeout
 		$"../LevelUI/GlitchEffect".visible=false
-	if Input.is_action_just_pressed("Shockwave"):
-		print("Clicked")
+	if Input.is_action_just_pressed("Shockwave") and not OnShockwaveCooldown:
+		OnShockwaveCooldown=true
 		var Shockwave= SHOCKWAVE.instantiate()
 		Shockwave.scale= scale
 		Shockwave.rotation =rotation
@@ -41,12 +45,16 @@ func _process(delta: float) -> void:
 		ShockwaveScaleTween.tween_property(Shockwave,"scale",Shockwave.scale*8,0.5)
 		await get_tree().create_timer(0.5).timeout
 		set_physics_process(true)
-	if Input.is_action_just_pressed("Shoot"):
+		$ShockwaveCooldown.start()
+		
+	if Input.is_action_just_pressed("Shoot") and not OnBulletCooldown:
+		OnBulletCooldown =true
 		look_at(get_global_mouse_position())
 		var Bullet= BULLET.instantiate()
 		Bullet.global_position= global_position
 		Bullet.rotation = rotation
 		get_tree().current_scene.add_child(Bullet)
+		$BulletTimer.start()
 		
 		
 		
@@ -57,3 +65,11 @@ func _physics_process(delta: float) -> void:
 	if Direction.length()>0:
 		rotation = lerp_angle(rotation,Direction.angle(),RotationSpeed*delta)
 	move_and_slide()
+
+
+func _on_shockwave_cooldown_timeout() -> void:
+	OnShockwaveCooldown= false
+
+
+func _on_bullet_timer_timeout() -> void:
+	OnBulletCooldown= false

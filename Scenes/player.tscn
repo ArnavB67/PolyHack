@@ -8,6 +8,18 @@ bg_color = Color(0.14153159, 8.04686e-08, 1.8049032e-08, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvnsp"]
 bg_color = Color(0.79607844, 0, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6t5aa"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1.0107458e-06, 0.9249972, 0.14109874, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
 [sub_resource type="Gradient" id="Gradient_v0iea"]
 colors = PackedColorArray(0, 0, 0, 0, 0.25505674, 0.9761532, 0.5165333, 1)
 
@@ -41,6 +53,61 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_cvnsp")
 value = 50.0
 show_percentage = false
 
+[node name="ShockWaveCooldown" type="Panel" parent="CanvasLayer" unique_id=2031294779]
+offset_left = 1081.0
+offset_top = 584.0
+offset_right = 1121.0
+offset_bottom = 624.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6t5aa")
+
+[node name="ShockwaveProgressBar" type="ProgressBar" parent="CanvasLayer/ShockWaveCooldown" unique_id=1086917409]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 5.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Line2D" type="Line2D" parent="CanvasLayer/ShockWaveCooldown/ShockwaveProgressBar" unique_id=1543022398]
+modulate = Color(0.73612815, 1.8249996, 0.6824598, 1)
+position = Vector2(21, 20)
+rotation = -0.7853982
+scale = Vector2(4, 4)
+points = PackedVector2Array(-2, -3, -2, 3, 4, 0)
+closed = true
+width = 0.1
+default_color = Color(1.8289685e-06, 0.99432117, 0.3358183, 1)
+
+[node name="BulletCooldown" type="Panel" parent="CanvasLayer" unique_id=2145480318]
+offset_left = 1013.0
+offset_top = 584.0
+offset_right = 1053.0
+offset_bottom = 624.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6t5aa")
+
+[node name="BulletCooldownProgressBar" type="ProgressBar" parent="CanvasLayer/BulletCooldown" unique_id=137009912]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 0.5
+step = 0.001
+fill_mode = 3
+show_percentage = false
+
+[node name="Line2D" type="Line2D" parent="CanvasLayer/BulletCooldown/BulletCooldownProgressBar" unique_id=63280419]
+modulate = Color(0.64821196, 1.825, 0.5977948, 1)
+position = Vector2(17.000029, 12)
+scale = Vector2(8, 8)
+points = PackedVector2Array(0, 0, 1, 1, 0, 2)
+width = 0.5
+default_color = Color(0, 0.99607843, 0.3372549, 1)
+
 [node name="DamageEffect" type="CPUParticles2D" parent="." unique_id=218628757]
 emitting = false
 amount = 30
@@ -64,3 +131,14 @@ gradient = SubResource("Gradient_v0iea")
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
+
+[node name="ShockwaveCooldown" type="Timer" parent="." unique_id=1450386233]
+wait_time = 5.0
+one_shot = true
+
+[node name="BulletTimer" type="Timer" parent="." unique_id=1368753066]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="ShockwaveCooldown" to="." method="_on_shockwave_cooldown_timeout"]
+[connection signal="timeout" from="BulletTimer" to="." method="_on_bullet_timer_timeout"]
