@@ -1,7 +1,9 @@
 extends Node
 
-const ENEMY = preload("uid://ffuginxsakpn")
+const TRIANGLE_ENEMY = preload("uid://ffuginxsakpn")
+const SQUARE_ENEMY = preload("uid://b0b7byu7bpff6")
 var GameOverTriggered = false
+var LastTimeHealedScore =0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	%GameOverLayer.visible=false
@@ -10,6 +12,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Globals.Score%5 ==0 and LastTimeHealedScore!=Globals.Score and Globals.HackPercentage-1>0:
+		LastTimeHealedScore=Globals.Score
+		Globals.HackPercentage-=1
+		var HealTween = get_tree().create_tween()
+		HealTween.tween_property($HealBG.get_theme_stylebox("panel"),"bg_color:a",0.1,0.2)
+		HealTween.tween_property($HealBG.get_theme_stylebox("panel"),"bg_color:a",0,0.2)
 	$LevelUI/Score.text = "PURGED : "+str(Globals.Score)
 	$GameOverLayer/GameOverPanel/Label2.text=str(Globals.Score)+" THREATS NULLIFIED"
 	var CurrentEnemySpawnTimer= max(0.25,1.5-(Globals.Score*0.01))
@@ -28,9 +36,14 @@ func _process(delta: float) -> void:
 
 
 func _on_enemy_spawn_timer_timeout() -> void:
-	var Enemy = ENEMY.instantiate()
-	Enemy.position=Vector2(randi_range(-5,1158),randi_range(-5,680))
-	get_tree().current_scene.add_child(Enemy)
+	if Globals.Score>25 and randf()>0.6:
+		var SquareEnemy = SQUARE_ENEMY.instantiate()
+		SquareEnemy.position=Vector2(randi_range(-5,1158),randi_range(-5,680))
+		get_tree().current_scene.add_child(SquareEnemy)
+	else:
+		var TriangleEnemy = TRIANGLE_ENEMY.instantiate()
+		TriangleEnemy.position=Vector2(randi_range(-5,1158),randi_range(-5,680))
+		get_tree().current_scene.add_child(TriangleEnemy)
 
 
 func _on_restart_pressed() -> void:

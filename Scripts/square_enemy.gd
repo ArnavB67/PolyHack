@@ -1,11 +1,43 @@
 extends Area2D
 
-
+var Direction
+const EnemySpeed= 200
+var SquareHitCount = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	add_to_group("Enemy")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	Direction = (Globals.PlayerPosition-global_position).normalized()
+	position.x+=Direction.x*delta*EnemySpeed
+	position.y+=Direction.y*delta*EnemySpeed
+	rotation=lerp_angle(rotation,Direction.angle(),15*delta)
+
+func _on_life_time_timeout() -> void:
+	queue_free()
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		if Globals.HackPercentage+5<100:
+			Globals.HackPercentage+=5
+			Globals.IsPlayerHit = true
+		elif Globals.HackPercentage<=100:
+			Globals.HackPercentage=100
+			Globals.IsGameOver = true
+		queue_free()
+
+func TakeDamage(Damage):
+	SquareHitCount+=Damage
+	$DeathEffect.emitting=true
+	var Camera=get_viewport().get_camera_2d()
+	if Camera:
+		Camera.ShakeOnHit(15)
+	if SquareHitCount>=3:
+		Globals.Score+=1
+		$MeshInstance2D.hide()
+		$CollisionShape2D.set_deferred("disabled",true)
+		await get_tree().create_timer(0.3).timeout
+		queue_free()
+	

@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://b0b7byu7bpff6"]
 
+[ext_resource type="Script" uid="uid://b1nacd66t3psr" path="res://Scripts/square_enemy.gd" id="1_s5bd7"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_s5bd7"]
 
 [sub_resource type="Gradient" id="Gradient_4bhya"]
@@ -8,12 +10,17 @@ colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_3jp22"]
 gradient = SubResource("Gradient_4bhya")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4bhya"]
+size = Vector2(4, 4)
+
 [node name="SquareEnemy" type="Area2D" unique_id=621703244]
 scale = Vector2(8, 8)
+script = ExtResource("1_s5bd7")
 metadata/_edit_vertical_guides_ = [-1.0]
 metadata/_edit_horizontal_guides_ = [4.0]
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=79982784]
+modulate = Color(1.825, 0.6540995, 0.5358407, 1)
 scale = Vector2(4, 4)
 mesh = SubResource("BoxMesh_s5bd7")
 texture = SubResource("GradientTexture2D_3jp22")
@@ -35,6 +42,9 @@ gravity = Vector2(0, 0)
 initial_velocity_min = 10.0
 initial_velocity_max = 40.0
 color = Color(0, 1, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=825591196]
+shape = SubResource("RectangleShape2D_4bhya")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="LifeTime" to="." method="_on_life_time_timeout"]

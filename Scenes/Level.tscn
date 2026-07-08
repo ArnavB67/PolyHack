@@ -12,6 +12,9 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8rbpu"]
 bg_color = Color(0.18000486, 0.18000486, 0.18000486, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pmxqn"]
+bg_color = Color(0, 1, 0, 0)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ba56"]
 size = Vector2(14, 648)
 
@@ -187,6 +190,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8rbpu")
+
+[node name="HealBG" type="Panel" parent="." unique_id=89226121]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pmxqn")
 
 [node name="BackgroundLogs" type="RichTextLabel" parent="." unique_id=1599865411]
 anchors_preset = 15
