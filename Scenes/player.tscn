@@ -4,17 +4,12 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v0iea"]
 bg_color = Color(0.14153159, 8.04686e-08, 1.8049032e-08, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvnsp"]
 bg_color = Color(0.79607844, 0, 0, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+
+[sub_resource type="Gradient" id="Gradient_v0iea"]
+colors = PackedColorArray(0, 0, 0, 0, 0.25505674, 0.9761532, 0.5165333, 1)
 
 [node name="Player" type="CharacterBody2D" unique_id=1101997899]
 z_index = 5
@@ -22,7 +17,8 @@ scale = Vector2(4, 4)
 script = ExtResource("1_v0iea")
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=431576194]
-color = Color(0.28581735, 0.9799898, 0.43828398, 1)
+modulate = Color(1.3626877, 1.7843883, 1.2904345, 1)
+color = Color(0.3254902, 0.92156863, 0.36078432, 1)
 antialiased = true
 polygon = PackedVector2Array(4, 0, -2, -3, -2, 3)
 
@@ -36,7 +32,7 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -80.0
-offset_top = 46.0
+offset_top = 33.0
 offset_right = 80.0
 offset_bottom = 51.0
 grow_horizontal = 2
@@ -59,3 +55,12 @@ gravity = Vector2(0, 0)
 initial_velocity_min = 10.0
 initial_velocity_max = 40.0
 color = Color(1, 0, 0, 1)
+
+[node name="Trail" type="Line2D" parent="." unique_id=1266244577]
+modulate = Color(1.106, 1.825, 1.052, 1)
+top_level = true
+width = 3.0
+gradient = SubResource("Gradient_v0iea")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2

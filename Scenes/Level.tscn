@@ -30,6 +30,8 @@ border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
+shadow_color = Color(0, 0, 0, 0.6431373)
+shadow_offset = Vector2(4, 4)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vsvp5"]
 
@@ -169,6 +171,12 @@ corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 
+[sub_resource type="Environment" id="Environment_5rrr5"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.8
+glow_blend_mode = 0
+
 [node name="Level" type="Node" unique_id=847438034]
 script = ExtResource("1_fuudy")
 
@@ -190,7 +198,7 @@ offset_right = -4.0
 offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/default_color = Color(0.25882354, 0.98039216, 0.39215687, 0.3137255)
+theme_override_colors/default_color = Color(0.25882354, 0.98039216, 0.39215687, 0.5882353)
 theme_override_fonts/normal_font = ExtResource("2_xylue")
 scroll_following = true
 script = ExtResource("1_8rbpu")
@@ -297,6 +305,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="GameOverLayer" type="CanvasLayer" parent="." unique_id=1668819839]
+visible = false
 
 [node name="GameOverPanel" type="Panel" parent="GameOverLayer" unique_id=1726849497]
 anchors_preset = 8
@@ -440,12 +449,14 @@ position = Vector2(587, 295)
 collision_mask = 10
 
 [node name="EnemySpawnTimer" type="Timer" parent="." unique_id=681386568]
-wait_time = 0.1
 autostart = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1126594645]
 position = Vector2(576, 324)
 script = ExtResource("6_tj5wv")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1830796598]
+environment = SubResource("Environment_5rrr5")
 
 [connection signal="timeout" from="BackgroundLogsTimer" to="BackgroundLogs" method="_on_timer_timeout"]
 [connection signal="pressed" from="GameOverLayer/GameOverPanel/Restart" to="." method="_on_restart_pressed"]
